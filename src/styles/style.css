@@ -1,0 +1,646 @@
+//color picker question
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+    <span>1</span><input type="range" id="font" min="1" max="20" oninput="fontchange()"><span>20</span>
+    <input type="color" id="color" oninput="colorchange()" >
+    <input type="style" id="style" oninput="changefstyle()">
+    <button type="button" id="left" onclick="alignleft()">L</button>
+    <button type="button" id="center" onclick="aligncenter()" >c</button>
+    <button  type="button" id="right" onclick="alignright()">R</button>
+</form>
+<div id="text">avinash</div>
+<script type="text/javascript">
+     var text = document.getElementById("text");
+     function fontchange() {
+    let frange = document.getElementById("font").value;
+    text.style.fontSize = frange + "px";
+
+   }
+   function colorchange() {
+    let color = document.getElementById("color").value;
+  text.style.color = color;
+   }
+ function changefstyle(){
+    let fstyle = document.getElementById("style").value;
+  text.style.fontStyle = fstyle;
+   }
+   function alignleft(){
+   text.style.textAlign = "left";
+   }
+   function aligncenter(){
+    text.style.textAlign = "center";
+}
+function alignright(){
+  text.style.textAlign = "right";
+}
+
+</script>
+</body>
+</html>
+
+
+
+// Dynamically Add Name{bs name change kar lo}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>add Name</button>
+    <script type="text/javascript">
+        
+       let names = ["SACHIN","SAOURABH","DRAVID","DHONI","KHOLI"];
+       let ul = document.createElement("ul");
+       let index = 0;
+       document.querySelector("button").addEventListener("click",function(){
+        let li = document.createElement("li");
+        if (index<names.length) {
+              li.textContent= names[index];
+              ul.appendChild(li);
+              index++;
+        } else {
+            alert("no more element is present");
+        }
+       })
+       document.body.appendChild(ul);
+    </script>
+</body>
+</html>
+
+
+// dynamic submit and reset button
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="username" name="username" >
+        <button  type="button" id="btn">submit</button>
+        <button id="reset" type="button">reset</button>
+    </form>
+    
+    <script type="text/javascript"> 
+        /*let ul = document.createElement("ul");
+         
+        document.querySelector("#btn").addEventListener("click",function(){
+            let username1 =document.getElementById("username").value;
+            let li = document.createElement("li");
+        console.log(username1);
+        li.textContent=username1;
+        ul.appendChild(li);
+        
+        li.style.cssText=" color:red; font-size:20px; font-weight:bold ;list-style-type:none"
+        })
+        document.querySelector("#reset").addEventListener("click",function(){
+             let lastItem = ul.lastElementChild; // Get the last <li> element
+            if (lastItem) {
+                lastItem.remove(); // Remove the last <li>
+            }
+          
+        })
+    document.body.appendChild(ul);
+        
+        */
+       let ul = document.createElement("ul");
+    document.querySelector("#btn").addEventListener("click",function(){
+        let li = document.createElement("li");
+       let username = document.getElementById("username").value;
+        li.textContent = username;
+        ul.appendChild(li);
+        li.style.cssText="color:red;font-style:italic;list-style-type:none"
+    })
+    document.querySelector("#reset").addEventListener("click",function(){
+       let lastelement = ul.lastElementChild;
+       if(lastelement){
+        lastelement.remove();
+       }
+    })
+    document.body.appendChild(ul);
+
+      
+         
+    </script>
+</body>
+</html>
+
+
+// booking site question
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style type="text/css">
+        
+    </style>
+
+    <script type="text/javascript">
+            function bookTicket() {
+                console.log("Function is triggered...");
+            
+                document.getElementById("displaySummary").style.display = "block";
+                
+                document.getElementById("lblMovie").textContent = document.getElementById("lstMovies").value;
+
+                document.getElementById("lblLocation").textContent = document.getElementById("lstCinemas").value;
+
+                document.getElementById("lblDate").textContent = document.getElementById("lstDates").value;
+                
+                document.getElementById("lblTime").textContent = document.getElementById("lstTimes").value;
+
+                document.getElementById("lblSeats").textContent = document.getElementById("lstOptions").value;
+
+
+                movieName = document.getElementById("lstMovies").value;
+                poster = document.getElementById("poster");
+                screen = "";
+
+                if (movieName === "Max") {
+                    poster.src="../public/images/max.png";
+                    screen = "SCREEN-1";
+                } else {
+                    poster.src="../public/images/UI.png";
+                    screen = "SCREEN-2";
+                }
+
+                document.getElementById("lblScreen").textContent=screen;
+            }
+    </script>
+</head>
+<body class="container-fluid">
+
+    
+     <!-- Button trigger modal -->
+     <button type="button" class="btn btn-danger mt-3 w-25" 
+            data-bs-toggle="modal" data-bs-target="#booking">
+        Quick Booking
+     </button>
+     
+     <!-- Modal -->
+     <div class="modal fade" id="booking">
+
+       <div class="modal-dialog modal-fullscreen">
+
+         <div class="modal-content">
+        
+           <!-- Modal Header-->
+           <div class="modal-header">
+             <h3>Quick Booking</h3>
+             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+           </div>
+
+           <!-- Modal Body-->
+           <div class="modal-body">
+             <nav class="d-flex justify-content-between p-1 bg-dark text-light p-2">
+                <div>
+                    <select id="lstMovies" class="form-select">
+                        <option>Select Movie</option>
+                        <option>Max</option>
+                        <option>UI</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="lstCinemas" class="form-select">
+                        <option>Select Cinema</option>
+                        <option>Inox Whitefield</option>
+                        <option>Veeresh</option>
+                    </select>
+                </div>
+                <div>
+                    <select  id="lstDates" class="form-select">
+                        <option>Select Date</option>
+                        <option>Today 27-DEC</option>
+                        <option>Tommo 28-DEC</option>
+                    </select>
+                </div>
+                <div>
+                    <select  id="lstTimes" class="form-select">
+                        <option>Select Time</option>
+                        <option>10.30 AM</option>
+                        <option>6.30 PM</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="lstOptions" class="form-select">
+                        <option>Select Seats</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div>
+                    <!-- triggering the script upon clicking the button-->
+                    <button class="btn btn-danger" 
+                            data-bs-dismiss="modal"
+                            onclick="bookTicket()">
+                            Book
+                    </button>
+                </div>
+             </nav>
+           </div>
+
+           <!-- Modal Footer-->
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             <button type="button" class="btn btn-primary">Understood</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+     <!--Used for rendering the output to the user-->
+     <div class="w-25" id="displaySummary" style="display: none;">
+        <h3 class="bg-dark text-white mt-3 p-2">Booking Summary</h3>
+        <dl class="row">
+
+            <img  width="100%" height="250" id="poster">
+
+            <dt class="col-3">Movie</dt>
+            <dd id="lblMovie" class="col-9">  </dd>
+
+            <dt class="col-3">Location</dt>
+            <dd id="lblLocation" class="col-9"> </dd>
+
+            <dt class="col-3">Date</dt>
+            <dd id="lblDate" class="col-9"></dd>
+
+            <dt class="col-3">Time</dt>
+            <dd id="lblTime" class="col-9"></dd>
+
+            <dt class="col-3">Screen</dt>
+            <dd id="lblScreen" class="col-9"></dd>
+
+            <dt class="col-3">Seats</dt>
+            <dd id="lblSeats" class="col-9"></dd>
+
+        </dl>
+        <button class="btn btn-link" data-bs-target="#booking" data-bs-toggle="modal">
+            Modify Booking
+        </button>
+     </div>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+
+// product registration question
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+
+
+    <style type="text/css">
+
+    </style>
+    
+    <script type="text/javascript">
+            function registerProduct() {
+    
+            
+                document.getElementById("detailscontainer").style.display = "block";
+                document.getElementById("buttoncontainer").style.display = "none";
+    
+    
+                document.getElementById("lblName").innerText =document.getElementById("txtName").value;
+                document.getElementById("lblPrice").innerText =document.getElementById("txtPrice").value;
+                document.getElementById("lblCity").innerText =document.getElementById("lstCities").value;
+    
+    
+                stockAvailability = document.getElementById("lblStock");
+    
+                if (document.getElementById("optStock").checked) {
+                    stockAvailability.textContent = "Available";
+                } else {
+                    stockAvailability.textContent = "Not-Available";
+                }
+            }
+    
+            function editProduct() {
+                console.log("Edit button is pressed by the user");
+    
+                document.getElementById("lblTitle").textContent = "EDIT PRODUCT";
+                document.getElementById("btnRegister").textContent = "SAVE";
+                document.getElementById("btnRegister").className = "btn btn-success";
+    
+    
+            }
+       
+    </script>
+    </head>
+    <body>
+    
+    <!-- Button trigger modal -->
+     <div id="buttoncontainer">
+         <button type="button" class="btn btn-primary m-3" 
+         data-bs-toggle="modal" data-bs-target="#register">
+                ADD PRODUCT
+        </button>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="register">
+    
+      <div class="modal-dialog">
+    
+        <div class="modal-content">
+    
+          <div class="modal-header">
+            <h2 id="lblTitle">Add Product</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+    
+          <div class="modal-body">
+            <dl>
+                <dt>Name</dt>
+                <dd>
+                    <input type="text" id="txtName" class="form-control">
+                </dd>
+    
+                <dt>Price</dt>
+                <dd>
+                    <input type="number" id="txtPrice" class="form-control">
+                </dd>
+    
+                <dt>Shipped To</dt>
+                <dd>
+                    <select class="form-select" id="lstCities">
+                        <option>Select City</option>
+                        <option value="HYD">Hyderabad</option>
+                        <option value="BGR">Bengaluru</option>
+                        <option value="TN">Chennai</option>
+                    </select>
+                </dd>
+    
+                <dt>Stock</dt>
+                <dd class="form-switch">
+                        <input type="checkbox" id="optStock" class="form-check-input">
+                        <label class="form-check-label">Available</label>
+                </dd>
+            </dl>
+          </div>
+          
+          <div class="modal-footer">
+            <button class="btn btn-primary" data-bs-dismiss="modal" id="btnRegister" onclick="registerProduct()">Register</button>
+            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+    
+        </div>
+    
+      </div>
+    
+    </div>
+    
+    <div class="w-25 m-2" id="detailscontainer" style="display: none;">
+        <h2 class="bg-dark text-white p-3">Product Details</h2>
+        <dl>
+            <dt>Name</dt>
+            <dd id="lblName"></dd>
+    
+            <dt>Price</dt>
+            <dd id="lblPrice"></dd>
+    
+            <dt>City</dt>
+            <dd id="lblCity"></dd>
+    
+            <dt>Stock</dt>
+            <dd id="lblStock"></dd>
+        </dl>
+    
+        <button class="btn btn-warning bi bi-pen-fill" data-bs-toggle="modal" data-bs-target="#register" onclick="editProduct()"> EDIT </button>
+    
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+// EMI Calculator
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+        .container{
+            border: 2px solid black;
+            
+        }
+
+        .heading{
+            color: white;
+            background-color: black;
+            font-size: 20px;
+        }
+
+        .heading{
+            text-align: center;
+            padding: 3px;
+        }
+
+        .para{
+            margin-top: 50px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container mt-4 " style="height: 250px;"> 
+        <div class="bg-black text-white text-center" >
+           <h3>Personal Loan Calculaotor</h3>
+        </div> 
+
+        <div class="d-flex justify-content-around">
+
+           <div class="m-3">
+               <dl class="d-flex">
+                   <dt>Amount You Need</dt>
+                   <dd class="ms-1"><input type="text" id="text1"  size="10"></dd>
+               </dl>
+               <span>50,000</span><input type="range" name="" id="range1" min="50000" max="100000"  style="width: 180px;" onchange="rangecheck()"><span>10,000</span>
+
+               
+           </div>
+
+           <div class="m-3">
+               <dl class="d-flex">
+                   <dt>for</dt>
+                   <dd class="ms-1"><input type="text" id="text2" size="3"></dd>
+                   <dt class="ms-1">years</dt>
+               </dl>
+               <span>1</span><input type="range" name=""  id="range2" min="1" max="10"  style="width: 180px;" onchange="rangecheck()"><span>10</span>
+               
+           </div>
+
+
+           <div class="m-3">
+               <dl class="d-flex">
+                   <dt>Interest rate</dt>
+                   <dd class="ms-1"><input type="text" id="text3" size="10"></dd>
+                   <dt>%</dt>
+               </dl>
+               <span>10.24%</span><input type="range" name=""  id="range3" min="10.25" max="18.45" step="0.25" style="width: 180px;" onchange="rangecheck()"><span>18.45%</span>
+               
+           </div>
+
+
+       </div>
+
+
+       <button class="btn btn-primary float-end mt-3 me-3" id="button" onclick="calculate()">Calculate</button>
+
+
+
+       <p class="fw-bold para " id="show" style="display: none;">
+           Your EMI Amount is <span id="print"></span> for 24 Month
+       </p>
+   </div>
+
+
+
+
+   <script type="text/javascript">
+        let text1 = document.getElementById("text1");
+        let text2 = document.getElementById("text2");
+        let text3 = document.getElementById("text3");
+
+        let range1 = document.getElementById("range1");
+        let range2 = document.getElementById("range2");
+        let range3 = document.getElementById("range3");
+
+
+        text1.value = range1.value;
+            text2.value = range2.value;
+            text3.value = range3.value;
+        
+
+        function rangecheck(){
+            text1.value = range1.value;
+            text2.value = range2.value;
+            text3.value = range3.value;
+        }
+
+
+        function calculate(){
+            button = document.getElementById("button");
+            
+            t1 = Number(text1.value);
+            t2 = Number(text2.value);
+            t3 = Number(text3.value);
+
+           
+            // console.log(data1)
+            // console.log(data2)
+            // console.log(data3)
+
+            result= (t1 * t3 * Math.pow(1+t3, t2)) / (Math.pow(1 + t3, t2) -1);
+
+            document.getElementById("show").style.display="block";
+            document.getElementById("print").textContent = result;
+        }
+
+   </script>
+
+
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+//Login Page 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script type="text/javascript">
+        function changeTheme(){
+            let checkbox = document.getElementById("themeCheckBox");
+            let formLogin = document.getElementById("frmLogin");
+            let buttonLogin = document.getElementById("btnLogin");
+
+            if (checkbox.checked) {
+                formLogin.className = "border border-3 rounded p-4 w-25 bg-dark text-white"
+                buttonLogin.className = "btn btn-light w-100";
+                
+            } else {
+                formLogin.className = "border border-3 rounded p-4 w-25 bg-light text-dark"
+                buttonLogin.className = "btn btn-light w-100";
+                
+            }
+
+
+        }
+    </script>
+
+</head>
+<body class="container-fluid mt-3 d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <form action="" class="border border-3 rounded p-4 w-25 " id="frmLogin">
+        <div class="form-switch">
+            <input type="checkbox" name="" id="themeCheckBox" class="form-check-input" onchange="changeTheme()">
+            Dark Theme
+        </div>
+        <h2>User Login</h2>
+        <dl>
+            <dt>User Name</dt>
+            <dd><input type="text" class="form-control"></dd>
+            <dt>password</dt>
+            <dd><input type="text" class="form-control"></dd>
+        </dl>
+        <button class="btn btn-dark w-100" id="btnLogin">Click Here</button>
+    </form>
+
+    
+</body>
+</html>
